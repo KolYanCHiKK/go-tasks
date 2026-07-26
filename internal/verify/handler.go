@@ -3,7 +3,7 @@ package verify
 import (
 	"net/http"
 	"project/go-tasks/configs"
-	"project/go-tasks/pkg/responce"
+	"project/go-tasks/pkg/response"
 	"strings"
 )
 
@@ -29,7 +29,7 @@ func (h *Handler) Send() http.HandlerFunc {
 			Address: h.Address,
 		}
 
-		responce.Json(w, resp, 201)
+		response.Json(w, resp, 201)
 	}
 }
 
@@ -40,11 +40,11 @@ func (h *Handler) Verify() http.HandlerFunc {
 				Status:  "Error",
 				Message: "Hash token is missing from the request",
 			}
-			responce.Json(w, resp, 400)
+			response.Json(w, resp, 400)
 			return
 		}
 
 		resp := VerifyResponse{Status: "Success", Links: h.Email}
-		responce.Json(w, resp, 201)
+		response.Json(w, resp, 201)
 	}
 }
