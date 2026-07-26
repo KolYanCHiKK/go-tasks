@@ -8,6 +8,7 @@ type SendResponse struct {
 
 type VerifyResponse struct {
 	Status string `json:"status"`
+	Links  string `json:"links"`
 }
 
 type VerifyErrorResponse struct {

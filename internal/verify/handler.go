@@ -44,7 +44,7 @@ func (h *Handler) Verify() http.HandlerFunc {
 			return
 		}
 
-		resp := VerifyResponse{Status: "Success"}
+		resp := VerifyResponse{Status: "Success", Links: h.Email}
 		responce.Json(w, resp, 201)
 	}
 }
