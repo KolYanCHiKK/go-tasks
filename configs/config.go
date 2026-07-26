@@ -21,6 +21,6 @@ func GetConfig() (*Config, error) {
 	return &Config{
 		Email:    os.Getenv("EMAIL"),
 		Password: os.Getenv("PASSWORD"),
-		Address:  "ADDRESS",
+		Address:  os.Getenv("ADDRESS"),
 	}, nil
 }
