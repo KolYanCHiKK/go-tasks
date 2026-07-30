@@ -7,9 +7,16 @@ import (
 )
 
 type Config struct {
-	Email    string
+	Host     string
 	Password string
-	Address  string
+	File     string
+	SendConfig
+}
+
+type SendConfig struct {
+	DefaultEmail  string
+	SendToken     string
+	ReserverToken string
 }
 
 func GetConfig() (*Config, error) {
@@ -19,8 +26,13 @@ func GetConfig() (*Config, error) {
 	}
 
 	return &Config{
-		Email:    os.Getenv("EMAIL"),
+		Host:     os.Getenv("HOST"),
 		Password: os.Getenv("PASSWORD"),
-		Address:  os.Getenv("ADDRESS"),
+		File:     os.Getenv("FILE"),
+		SendConfig: SendConfig{
+			DefaultEmail:  os.Getenv("DEFAULT_ADDRESS"),
+			SendToken:     os.Getenv("SEND_TOKEN"),
+			ReserverToken: os.Getenv("RESERVE_TOKEN"),
+		},
 	}, nil
 }
